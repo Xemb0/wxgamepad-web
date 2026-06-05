@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WxGamepad — Turn Your Phone Into a Wireless PC Gamepad</title>
+    <meta name="description" content="WxGamepad turns your Android or iOS phone into a low-latency wireless gamepad for your PC. Scan a QR code, connect over Wi-Fi, and play — no extra hardware." />
+    <!-- TODO(assets): logo/hero live in the shared Supabase 'product-assets' bucket (wx-gamepad/hero.png). Swap if the path differs. -->
+    <link rel="icon" type="image/png" href="https://pjeqnlwzyhjvahbrgham.supabase.co/storage/v1/object/public/product-assets/wx-gamepad/hero.png" />
+    <meta property="og:title" content="WxGamepad — Your Phone is the Controller" />
+    <meta property="og:description" content="Low-latency wireless gamepad for your PC. Scan, connect over Wi-Fi, and play." />
+    <meta property="og:image" content="https://pjeqnlwzyhjvahbrgham.supabase.co/storage/v1/object/public/product-assets/wx-gamepad/hero.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+      }
+      .float-animation { animation: float 6s ease-in-out infinite; }
+      .gradient-text {
+        background: linear-gradient(45deg, #22d3ee, #6366f1, #a855f7);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .glow-effect { box-shadow: 0 0 24px rgba(34, 211, 238, 0.28); }
+      .grid-bg { background: linear-gradient(45deg, rgba(34, 211, 238, 0.10), rgba(168, 85, 247, 0.10)); }
+    </style>
+  </head>
+  <body class="bg-gray-950 text-white overflow-x-hidden">
+    <!-- Hero Section -->
+    <section class="min-h-screen flex flex-col lg:flex-row items-center justify-between px-6 py-16 lg:px-20 bg-gradient-to-br from-indigo-950 via-slate-900 to-cyan-950 relative">
+      <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute top-20 left-10 w-32 h-32 bg-cyan-500/20 rounded-full blur-xl float-animation"></div>
+        <div class="absolute bottom-20 right-10 w-40 h-40 bg-violet-500/20 rounded-full blur-xl float-animation" style="animation-delay: -2s;"></div>
+        <div class="absolute top-1/2 left-1/3 w-24 h-24 bg-indigo-500/20 rounded-full blur-xl float-animation" style="animation-delay: -4s;"></div>
+      </div>
+
+      <div class="lg:w-1/2 text-center lg:text-left relative z-10">
+        <div class="mb-8 flex justify-center lg:justify-start">
+          <div class="w-20 h-20 rounded-2xl glow-effect bg-gradient-to-br from-cyan-500 to-violet-600 flex items-center justify-center">
+            <!-- Gamepad mark -->
+            <svg class="w-11 h-11 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M7.5 6h9a5.5 5.5 0 0 1 5.5 5.5v.4a4.1 4.1 0 0 1-7.49 2.32l-.2-.29a1.5 1.5 0 0 0-1.23-.63h-2.16a1.5 1.5 0 0 0-1.23.63l-.2.29A4.1 4.1 0 0 1 2 11.9v-.4A5.5 5.5 0 0 1 7.5 6Zm-.75 3a.75.75 0 0 0-.75.75V11H4.75a.75.75 0 0 0 0 1.5H6v1.25a.75.75 0 0 0 1.5 0V12.5h1.25a.75.75 0 0 0 0-1.5H7.5V9.75A.75.75 0 0 0 6.75 9Zm8.25.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm2.25 2.25a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"/></svg>
+          </div>
+        </div>
+
+        <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+          <span class="text-white">Your phone is the</span>
+          <br />
+          <span class="gradient-text">gamepad</span>
+        </h1>
+
+        <p class="text-xl lg:text-2xl text-gray-300 mb-8 leading-relaxed">
+          Turn your Android or iOS phone into a low-latency wireless controller for your PC. Scan a QR code, connect over Wi-Fi, and play — no extra hardware required.
+        </p>
+
+        <div class="bg-white/[0.04] backdrop-blur-xl rounded-2xl p-6 mb-8 border border-white/10 shadow-2xl">
+          <div class="flex items-center justify-between mb-5">
+            <h3 class="text-xs font-bold tracking-[0.2em] text-gray-400 uppercase">Available on</h3>
+            <span class="text-[11px] font-semibold text-green-400/90 flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span> Live
+            </span>
+          </div>
+
+          <div class="grid grid-cols-3 gap-3 mb-6">
+            <!-- Android -->
+            <div class="flex flex-col items-center gap-2 rounded-xl py-4 bg-white/[0.03] border border-white/10 hover:border-[#3DDC84]/50 transition-colors">
+              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="#3DDC84"><path d="M17.523 15.341a1.001 1.001 0 1 1 0-2.002 1.001 1.001 0 0 1 0 2.002m-11.046 0a1.001 1.001 0 1 1 0-2.002 1.001 1.001 0 0 1 0 2.002m11.405-6.02 1.997-3.46a.416.416 0 0 0-.152-.567.416.416 0 0 0-.568.152l-2.022 3.503a12.331 12.331 0 0 0-5.137-1.103c-1.84 0-3.583.398-5.138 1.103L4.842 4.946a.416.416 0 0 0-.568-.152.416.416 0 0 0-.152.567l1.997 3.46C2.687 11.07.605 14.32.605 18.073h22.79c0-3.752-2.082-7.003-5.513-8.752"/></svg>
+              <div class="text-center leading-tight">
+                <div class="text-[13px] font-semibold text-white">Android</div>
+                <div class="text-[10px] text-green-400/80 font-medium">Live now</div>
+              </div>
+            </div>
+            <!-- iOS / Apple -->
+            <div class="flex flex-col items-center gap-2 rounded-xl py-4 bg-white/[0.03] border border-blue-400/30 hover:border-blue-400/60 transition-colors relative overflow-hidden">
+              <span class="absolute top-1.5 right-1.5 text-[8px] font-bold tracking-wider text-blue-300 bg-blue-500/20 px-1.5 py-0.5 rounded">SOON</span>
+              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
+              <div class="text-center leading-tight">
+                <div class="text-[13px] font-semibold text-white">iOS</div>
+                <div class="text-[10px] text-blue-300 font-medium">Coming soon</div>
+              </div>
+            </div>
+            <!-- Desktop server -->
+            <div class="flex flex-col items-center gap-2 rounded-xl py-4 bg-white/[0.03] border border-white/10 hover:border-violet-400/50 transition-colors">
+              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="#C4B5FD" stroke-width="1.6"><rect x="2.5" y="4" width="19" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/></svg>
+              <div class="text-center leading-tight">
+                <div class="text-[13px] font-semibold text-white">PC Server</div>
+                <div class="text-[10px] text-violet-300/80 font-medium">Win / Mac / Linux</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-2">
+            <span class="inline-flex items-center gap-1.5 text-xs text-gray-300 bg-white/[0.05] border border-white/10 rounded-full px-3 py-1.5">
+              <svg class="w-3.5 h-3.5 text-cyan-300" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+              Low-latency Wi-Fi
+            </span>
+            <span class="inline-flex items-center gap-1.5 text-xs text-gray-300 bg-white/[0.05] border border-white/10 rounded-full px-3 py-1.5">
+              <svg class="w-3.5 h-3.5 text-violet-300" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm13-2h3v3h-3v-3zm0 5h3v3h-3v-3z"/></svg>
+              Scan-to-connect QR
+            </span>
+            <span class="inline-flex items-center gap-1.5 text-xs text-gray-300 bg-white/[0.05] border border-white/10 rounded-full px-3 py-1.5">
+              <svg class="w-3.5 h-3.5 text-green-300" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 5h-2v6l5 3 1-1.7-4-2.3V7z"/></svg>
+              Custom layouts
+            </span>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+          <!-- TODO(link): confirm Play Store listing is live -->
+          <a href="https://play.google.com/store/apps/details?id=com.autotech.wxgamepad" class="bg-gradient-to-r from-cyan-500 to-violet-600 hover:from-cyan-600 hover:to-violet-700 px-8 py-4 rounded-full font-bold text-white transform hover:scale-105 transition-all duration-300 glow-effect">
+            📱 Get it on Google Play
+          </a>
+          <a href="#download" class="bg-gray-800 hover:bg-gray-700 px-8 py-4 rounded-full font-bold text-white border border-gray-600 transform hover:scale-105 transition-all duration-300">
+            💻 Download PC Server
+          </a>
+        </div>
+
+        <div class="mt-8 text-center lg:text-left">
+          <p class="text-gray-400 text-sm">🎮 One app. Any PC game. No controller needed.</p>
+          <p class="text-gray-500 text-xs mt-3">
+            By installing or signing in to WxGamepad you agree to our
+            <a href="terms-of-service.html" class="text-cyan-400 hover:text-cyan-300 underline underline-offset-2">Terms of Service</a>
+            and
+            <a href="privacy-policy.html" class="text-cyan-400 hover:text-cyan-300 underline underline-offset-2">Privacy Policy</a>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Mock phone-as-controller preview -->
+      <div class="lg:w-1/2 mt-16 lg:mt-0 flex justify-center relative z-10">
+        <div class="relative">
+          <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/30 to-violet-500/30 blur-3xl rounded-full"></div>
+          <div class="relative bg-gray-900 rounded-3xl p-8 shadow-2xl border border-gray-700/50 backdrop-blur-sm grid-bg">
+            <div class="text-center mb-6">
+              <div class="inline-flex items-center gap-2 text-xs font-semibold text-green-400 bg-green-500/10 border border-green-500/30 rounded-full px-3 py-1">
+                <span class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span> Connected to PC
+              </div>
+              <p class="text-gray-400 text-sm mt-3">192.168.1.42 · 8 ms</p>
+            </div>
+
+            <!-- Mock controller -->
+            <div class="bg-black/60 rounded-2xl p-6 flex items-center justify-between gap-6">
+              <!-- D-pad -->
+              <div class="grid grid-cols-3 grid-rows-3 gap-1 w-24 h-24">
+                <div></div><div class="bg-gray-700 rounded"></div><div></div>
+                <div class="bg-gray-700 rounded"></div><div class="bg-gray-600 rounded"></div><div class="bg-gray-700 rounded"></div>
+                <div></div><div class="bg-gray-700 rounded"></div><div></div>
+              </div>
+              <!-- Face buttons -->
+              <div class="grid grid-cols-3 grid-rows-3 gap-1 w-24 h-24">
+                <div></div><div class="bg-yellow-400/80 rounded-full"></div><div></div>
+                <div class="bg-blue-400/80 rounded-full"></div><div></div><div class="bg-red-400/80 rounded-full"></div>
+                <div></div><div class="bg-green-400/80 rounded-full"></div><div></div>
+              </div>
+            </div>
+            <div class="flex justify-between mt-5">
+              <div class="w-20 h-20 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center">
+                <div class="w-9 h-9 rounded-full bg-gradient-to-br from-cyan-400 to-violet-500"></div>
+              </div>
+              <div class="w-20 h-20 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center">
+                <div class="w-9 h-9 rounded-full bg-gradient-to-br from-violet-400 to-cyan-500"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="max-w-7xl mx-auto px-6 py-20">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl lg:text-5xl font-bold mb-6">
+          <span class="gradient-text">Why</span> WxGamepad?
+        </h2>
+        <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+          A full wireless controller in your pocket — responsive, customisable, and built to run entirely on your own network.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-8">
+        <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl shadow-2xl border border-gray-700/50 hover:border-cyan-500/50 transition-all duration-300 group">
+          <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 text-white">Ultra-low latency</h3>
+          <p class="text-gray-400 leading-relaxed">A direct Wi-Fi connection between your phone and PC keeps input lag down so controls feel instant and responsive.</p>
+        </div>
+
+        <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl shadow-2xl border border-gray-700/50 hover:border-violet-500/50 transition-all duration-300 group">
+          <div class="w-16 h-16 bg-gradient-to-br from-violet-500 to-purple-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm13-2h3v3h-3v-3zm0 5h3v3h-3v-3z"/></svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 text-white">Scan &amp; connect</h3>
+          <p class="text-gray-400 leading-relaxed">No pairing menus. The PC server shows a QR code — scan it once and you're connected in seconds.</p>
+        </div>
+
+        <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl shadow-2xl border border-gray-700/50 hover:border-green-500/50 transition-all duration-300 group">
+          <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M4 5h16v10H4V5zm0 12h16v2H4v-2zM7 7h2v2H7V7zm0 0"/></svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 text-white">Custom layouts</h3>
+          <p class="text-gray-400 leading-relaxed">Build the controller you want — arrange buttons, sticks, and triggers, and switch between layout presets per game.</p>
+        </div>
+
+        <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl shadow-2xl border border-gray-700/50 hover:border-orange-500/50 transition-all duration-300 group">
+          <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 4a6 6 0 1 1 0 12 6 6 0 0 1 0-12zm0 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/></svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 text-white">Motion &amp; gyro</h3>
+          <p class="text-gray-400 leading-relaxed">Use your phone's gyroscope to steer, aim, and tilt — mapped to joystick or key input on the PC side.</p>
+        </div>
+
+        <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl shadow-2xl border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 group">
+          <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M4 4h16v12H4V4zm2 2v8h12V6H6zm-2 12h16v2H4v-2z"/></svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 text-white">Works on any PC</h3>
+          <p class="text-gray-400 leading-relaxed">The lightweight server runs on Windows, macOS, and Linux, translating your taps and tilts into native OS input.</p>
+        </div>
+
+        <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl shadow-2xl border border-gray-700/50 hover:border-yellow-500/50 transition-all duration-300 group">
+          <div class="w-16 h-16 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm3.1-9H8.9V6a3.1 3.1 0 0 1 6.2 0v2z"/></svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 text-white">Private &amp; local</h3>
+          <p class="text-gray-400 leading-relaxed">Play over your own Wi-Fi — controls stay on your local network. No cloud relay and no account required just to play.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="max-w-6xl mx-auto px-6 py-16">
+      <div class="bg-gradient-to-r from-indigo-900/50 to-cyan-900/50 rounded-3xl p-12 border border-violet-500/20">
+        <h2 class="text-3xl lg:text-4xl font-bold mb-10 text-center">🎮 Up and running in three steps</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-gray-900/50 rounded-xl p-6 backdrop-blur-sm">
+            <div class="text-cyan-300 text-3xl font-black mb-2">1</div>
+            <h4 class="font-semibold text-white mb-1">Install the PC server</h4>
+            <p class="text-sm text-gray-400">Download and run the WxGamepad Server on your Windows, macOS, or Linux computer.</p>
+          </div>
+          <div class="bg-gray-900/50 rounded-xl p-6 backdrop-blur-sm">
+            <div class="text-violet-300 text-3xl font-black mb-2">2</div>
+            <h4 class="font-semibold text-white mb-1">Scan the QR code</h4>
+            <p class="text-sm text-gray-400">Open the app on your phone and scan the QR code the server displays to connect over Wi-Fi.</p>
+          </div>
+          <div class="bg-gray-900/50 rounded-xl p-6 backdrop-blur-sm">
+            <div class="text-green-300 text-3xl font-black mb-2">3</div>
+            <h4 class="font-semibold text-white mb-1">Play</h4>
+            <p class="text-sm text-gray-400">Your phone is now a controller. Pick a layout and play any game on your PC.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Download section -->
+    <section id="download" class="max-w-6xl mx-auto px-6 py-16">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl lg:text-4xl font-bold mb-4"><span class="gradient-text">Download</span> WxGamepad</h2>
+        <p class="text-gray-400 max-w-2xl mx-auto">Get the app on your phone, then install the free server on the PC you want to control.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Mobile app -->
+        <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 border border-gray-700/50">
+          <h3 class="text-xl font-bold mb-4">📱 The app</h3>
+          <div class="flex flex-col gap-3">
+            <a href="https://play.google.com/store/apps/details?id=com.autotech.wxgamepad" class="flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-violet-600 hover:from-cyan-600 hover:to-violet-700 px-6 py-3 rounded-xl font-bold transition-all">Get it on Google Play</a>
+            <!-- TODO(link): replace '#' with the App Store URL once the iOS app is live -->
+            <a href="#" class="flex items-center justify-center gap-2 bg-gray-700/60 px-6 py-3 rounded-xl font-bold text-gray-300 border border-gray-600 cursor-not-allowed">App Store — coming soon</a>
+          </div>
+        </div>
+
+        <!-- Desktop server -->
+        <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 border border-gray-700/50">
+          <h3 class="text-xl font-bold mb-4">💻 The PC server</h3>
+          <p class="text-sm text-gray-400 mb-4">Required on the computer you want to control.</p>
+          <div class="grid grid-cols-3 gap-3">
+            <!-- TODO(link): these point at the repo's latest GitHub Release; confirm the repo/releases are public, or swap for direct asset URLs -->
+            <a href="https://github.com/Xemb0/Autotech_WxGamepad/releases/latest" class="flex flex-col items-center gap-2 bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 rounded-xl py-4 transition-colors">
+              <svg class="w-7 h-7 text-cyan-300" viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.5 10.5 4.4v7.1H3V5.5zm0 13L10.5 19.6v-7H3v5.9zM11.5 4.3 21 3v8.5h-9.5V4.3zm0 8.2H21V21l-9.5-1.3v-7.2z"/></svg>
+              <span class="text-xs font-semibold">Windows</span>
+            </a>
+            <a href="https://github.com/Xemb0/Autotech_WxGamepad/releases/latest" class="flex flex-col items-center gap-2 bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 rounded-xl py-4 transition-colors">
+              <svg class="w-7 h-7 text-gray-200" viewBox="0 0 24 24" fill="currentColor"><path d="M16.36 12.5c-.02-2.13 1.74-3.15 1.82-3.2-1-1.46-2.55-1.66-3.1-1.68-1.32-.13-2.58.78-3.25.78-.67 0-1.7-.76-2.8-.74-1.44.02-2.77.84-3.51 2.13-1.5 2.6-.38 6.44 1.07 8.55.71 1.03 1.56 2.19 2.67 2.15 1.07-.04 1.48-.69 2.77-.69 1.29 0 1.66.69 2.8.67 1.16-.02 1.89-1.05 2.6-2.09.82-1.2 1.16-2.36 1.18-2.42-.03-.01-2.26-.87-2.28-3.49zM14.2 5.9c.59-.71.99-1.7.88-2.69-.85.03-1.88.57-2.49 1.28-.55.63-1.03 1.64-.9 2.6.95.08 1.92-.48 2.51-1.19z"/></svg>
+              <span class="text-xs font-semibold">macOS</span>
+            </a>
+            <a href="https://github.com/Xemb0/Autotech_WxGamepad/releases/latest" class="flex flex-col items-center gap-2 bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 rounded-xl py-4 transition-colors">
+              <svg class="w-7 h-7 text-yellow-200" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-1.7 0-3 1.5-3 3.4 0 1 .1 2-.4 3-.6 1-1.7 1.7-2.2 3-.6 1.4-.2 2.6.3 3.8.2.5.1 1-.2 1.6-.5.9-.6 1.6-.2 2.1.5.6 1.5.4 2.3.1.5-.2.9-.2 1.4 0 1 .4 2 .8 3.1.5.7-.2 1-1 .9-1.8 0-.5.1-.9.5-1.4.7-.9 1.3-1.8 1-3.1-.2-1-1-1.9-1.4-3-.4-1-.3-2-.3-3C15 3.5 13.7 2 12 2z"/></svg>
+              <span class="text-xs font-semibold">Linux</span>
+            </a>
+          </div>
+          <p class="text-xs text-gray-500 mt-3">Also available on the <a href="https://imautotech.in/our_products/wx_gamepad/wxgamepad" class="text-cyan-400 hover:text-cyan-300 underline">product page</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screenshot Gallery -->
+    <section class="py-16 px-6">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-8 gradient-text">Screenshots</h2>
+        <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/gallery.js"></script>
+    <script>
+      // Screenshots come from the shared 'product-assets' Supabase (slug: wx-gamepad).
+      document.addEventListener('DOMContentLoaded', function () {
+        if (typeof loadGallery === 'function') loadGallery('wx-gamepad');
+      });
+    </script>
+
+    <!-- Footer -->
+    <footer class="bg-black/50 backdrop-blur-sm border-t border-gray-800 py-12">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center">
+          <div class="flex justify-center items-center space-x-3 mb-6">
+            <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-violet-600 rounded-xl flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M7.5 6h9a5.5 5.5 0 0 1 5.5 5.5v.4a4.1 4.1 0 0 1-7.49 2.32l-.2-.29a1.5 1.5 0 0 0-1.23-.63h-2.16a1.5 1.5 0 0 0-1.23.63l-.2.29A4.1 4.1 0 0 1 2 11.9v-.4A5.5 5.5 0 0 1 7.5 6Z"/></svg>
+            </div>
+            <span class="text-2xl font-bold gradient-text">WxGamepad</span>
+          </div>
+
+          <p class="text-gray-400 mb-6">© 2026 WxGamepad by Imautotech — turn any phone into a controller.</p>
+
+          <div class="flex flex-wrap justify-center gap-6 text-sm">
+            <a href="privacy-policy.html" class="text-cyan-400 hover:text-cyan-300 transition-colors">Privacy Policy</a>
+            <a href="terms-of-service.html" class="text-cyan-400 hover:text-cyan-300 transition-colors">Terms of Service</a>
+            <a href="contact.html" class="text-cyan-400 hover:text-cyan-300 transition-colors">Contact Us</a>
+            <a href="https://imautotech.in/support/?product=wx-gamepad" class="text-cyan-400 hover:text-cyan-300 transition-colors">Help Center</a>
+            <a href="https://imautotech.in/support/delete.html?product=wx-gamepad" class="text-cyan-400 hover:text-cyan-300 transition-colors">Delete Account</a>
+            <a href="https://imautotech.in/" class="text-violet-400 hover:text-violet-300 transition-colors">Need an App Built?</a>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-gray-800">
+            <p class="text-gray-500 text-sm">Made with ❤️ for gamers everywhere</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+          anchor.addEventListener('click', function (e) {
+            var target = document.querySelector(this.getAttribute('href'));
+            if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+          });
+        });
+        window.addEventListener('scroll', function () {
+          var scrolled = window.pageYOffset;
+          document.querySelectorAll('.float-animation').forEach(function (el) {
+            el.style.transform = 'translateY(' + scrolled * 0.1 + 'px)';
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

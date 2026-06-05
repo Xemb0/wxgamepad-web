@@ -1,0 +1,18 @@
+# Netlify config for the standalone WxGamepad marketing site.
+# Static site — no build step, just publish the repo root.
+# (Unlike watchparty-web there is no compiled web app under /app/, because
+#  WxGamepad has no wasmJs target — it's a phone controller, not a web app.)
+
+[build]
+  publish = "."
+
+# Long-cache static assets; HTML stays fresh on redeploy.
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "no-cache"
