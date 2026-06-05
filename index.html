@@ -67,15 +67,15 @@
                 <div class="text-[10px] text-green-400/80 font-medium">Live now</div>
               </div>
             </div>
-            <!-- iOS / Apple -->
-            <div class="flex flex-col items-center gap-2 rounded-xl py-4 bg-white/[0.03] border border-blue-400/30 hover:border-blue-400/60 transition-colors relative overflow-hidden">
-              <span class="absolute top-1.5 right-1.5 text-[8px] font-bold tracking-wider text-blue-300 bg-blue-500/20 px-1.5 py-0.5 rounded">SOON</span>
+            <!-- iOS / Apple → join the TestFlight beta -->
+            <a href="#ios-beta" title="Join the iOS beta" class="flex flex-col items-center gap-2 rounded-xl py-4 bg-white/[0.03] border border-blue-400/30 hover:border-blue-400/60 hover:bg-white/[0.06] transition-colors relative overflow-hidden cursor-pointer">
+              <span class="absolute top-1.5 right-1.5 text-[8px] font-bold tracking-wider text-blue-300 bg-blue-500/20 px-1.5 py-0.5 rounded">BETA</span>
               <svg class="w-7 h-7" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
               <div class="text-center leading-tight">
                 <div class="text-[13px] font-semibold text-white">iOS</div>
-                <div class="text-[10px] text-blue-300 font-medium">Coming soon</div>
+                <div class="text-[10px] text-blue-300 font-medium">Join the beta</div>
               </div>
-            </div>
+            </a>
             <!-- Desktop server → jump to downloads -->
             <a href="#download" title="Download the PC server" class="flex flex-col items-center gap-2 rounded-xl py-4 bg-white/[0.03] border border-white/10 hover:border-violet-400/50 hover:bg-white/[0.06] transition-colors cursor-pointer">
               <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="#C4B5FD" stroke-width="1.6"><rect x="2.5" y="4" width="19" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/></svg>
@@ -291,6 +291,27 @@
       </div>
     </section>
 
+    <!-- iOS Beta / TestFlight signup -->
+    <section id="ios-beta" class="py-16 px-6">
+      <div class="max-w-2xl mx-auto text-center">
+        <div class="bg-gradient-to-br from-cyan-600/20 to-violet-600/20 border border-cyan-500/30 rounded-3xl p-8 backdrop-blur-sm">
+          <div class="text-4xl mb-3">🍎</div>
+          <h2 class="text-3xl font-bold mb-2"><span class="gradient-text">iOS Beta</span> — get early access</h2>
+          <p class="text-gray-300 mb-6">Want WxGamepad on your iPhone before it's on the App Store? Drop your Apple ID and we'll send you a TestFlight invite.</p>
+          <form id="beta-form" class="flex flex-col sm:flex-row gap-3 justify-center">
+            <input id="beta-apple-id" type="email" required placeholder="Your Apple ID (email)"
+                   class="flex-1 bg-gray-900/70 border border-gray-700 rounded-full px-5 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500" />
+            <button type="submit" id="beta-submit"
+                    class="bg-gradient-to-r from-cyan-500 to-violet-600 hover:from-cyan-600 hover:to-violet-700 px-8 py-3 rounded-full font-bold text-white transform hover:scale-105 transition-all">
+              Request invite
+            </button>
+          </form>
+          <p id="beta-msg" class="text-sm mt-4 min-h-[1.25rem]"></p>
+          <p class="text-xs text-gray-500 mt-2">We only use your Apple ID to send the TestFlight invite. No spam, ever.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- Screenshot Gallery -->
     <section class="py-16 px-6">
       <div class="max-w-7xl mx-auto">
@@ -307,6 +328,43 @@
       document.addEventListener('DOMContentLoaded', function () {
         if (typeof loadGallery === 'function') loadGallery('wx-gamepad');
       });
+    </script>
+
+    <!-- iOS TestFlight signup → writes to the WxGamepad app's Supabase project.
+         Insert-only RLS: anyone can submit, nobody can read the list back.
+         (Publishable key is public by design — it also ships inside the app.) -->
+    <script>
+    (function () {
+      var BETA_URL = 'https://jxsfdtecrywavcrssses.supabase.co';
+      var BETA_KEY = 'sb_publishable_SPBjXIEmkY_h2MSdKsmeSg_5nmxH4hm';
+      var betaClient = window.supabase.createClient(BETA_URL, BETA_KEY);
+      var form = document.getElementById('beta-form');
+      var msg = document.getElementById('beta-msg');
+      var btn = document.getElementById('beta-submit');
+      if (!form) return;
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        var appleId = document.getElementById('beta-apple-id').value.trim();
+        if (!appleId) return;
+        btn.disabled = true; btn.textContent = 'Sending…';
+        msg.textContent = ''; msg.className = 'text-sm mt-4 min-h-[1.25rem]';
+        var res = await betaClient.from('testflight_signups')
+          .insert({ apple_id: appleId, platform: 'ios', source: 'website' });
+        if (!res.error) {
+          msg.textContent = "✅ You're on the list! Watch your inbox for a TestFlight invite.";
+          msg.className = 'text-sm mt-4 min-h-[1.25rem] text-green-400';
+          form.reset();
+        } else if (res.error.code === '23505') {
+          msg.textContent = "✅ You're already registered — your invite is on the way.";
+          msg.className = 'text-sm mt-4 min-h-[1.25rem] text-green-400';
+          form.reset();
+        } else {
+          msg.textContent = '⚠️ Something went wrong. Please try again.';
+          msg.className = 'text-sm mt-4 min-h-[1.25rem] text-red-400';
+        }
+        btn.disabled = false; btn.textContent = 'Request invite';
+      });
+    })();
     </script>
 
     <!-- Footer -->
