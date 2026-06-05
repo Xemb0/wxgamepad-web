@@ -45,5 +45,5 @@ python3 -m http.server 8080   # then open http://localhost:8080
   **public**, or swap for direct asset URLs (Drive / Supabase). The desktop CI publishes
   binaries to a GitHub Release.
 - **Hero / OG image** — `index.html` references `product-assets/wx-gamepad/hero.png`. Confirm it exists or swap.
-- **Support email** — set to `imautotech.support@gmail.com`; change if WxGamepad has its own.
+- **Support email** — `support@imautotech.in` (used on contact / privacy / terms pages).
 - **Screenshots** — managed in the shared Supabase (`products`/`product_screenshots`, slug `wx-gamepad`).
